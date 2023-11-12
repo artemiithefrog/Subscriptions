@@ -14,6 +14,7 @@
 		16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */; };
 		16C35CEB2AFEC6E300295D09 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35CEA2AFEC6E300295D09 /* Subscription.swift */; };
 		16C35CED2AFECCBA00295D09 /* AddSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */; };
+		16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1AD1A2B01811B007F2915 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSubscriptions.swift; sourceTree = "<group>"; };
 		16C35CEA2AFEC6E300295D09 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscription.swift; sourceTree = "<group>"; };
+		16F1AD1A2B01811B007F2915 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				16C35CD92AFEC48600295D09 /* ContentView.swift */,
 				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
 				16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */,
+				16F1AD1A2B01811B007F2915 /* Settings.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */,
 				16C35CED2AFECCBA00295D09 /* AddSubscription.swift in Sources */,
 				16C35CDA2AFEC48600295D09 /* ContentView.swift in Sources */,
 				16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */,
