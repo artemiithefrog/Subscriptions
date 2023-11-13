@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */; };
+		16C35A152B02C0C90024A9B5 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A142B02C0C90024A9B5 /* Service.swift */; };
+		16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A172B02C26F0024A9B5 /* Color+Ext.swift */; };
+		16C35A1A2B02C8000024A9B5 /* NewSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A192B02C8000024A9B5 /* NewSubscription.swift */; };
 		16C35CD82AFEC48600295D09 /* SubscriptionsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35CD72AFEC48600295D09 /* SubscriptionsApp.swift */; };
 		16C35CDA2AFEC48600295D09 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35CD92AFEC48600295D09 /* ContentView.swift */; };
 		16C35CDC2AFEC48800295D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16C35CDB2AFEC48800295D09 /* Assets.xcassets */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
+		16C35A142B02C0C90024A9B5 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		16C35A172B02C26F0024A9B5 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		16C35A192B02C8000024A9B5 /* NewSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscription.swift; sourceTree = "<group>"; };
 		16C35CD42AFEC48600295D09 /* Subscriptions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Subscriptions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C35CD72AFEC48600295D09 /* SubscriptionsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsApp.swift; sourceTree = "<group>"; };
 		16C35CD92AFEC48600295D09 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16C35A112B02C0810024A9B5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		16C35A162B02C25C0024A9B5 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				16C35A172B02C26F0024A9B5 /* Color+Ext.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		16C35CCB2AFEC48500295D09 = {
 			isa = PBXGroup;
 			children = (
@@ -60,8 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				16C35CD72AFEC48600295D09 /* SubscriptionsApp.swift */,
+				16C35A112B02C0810024A9B5 /* ViewModels */,
 				16C35CE92AFEC6C000295D09 /* Models */,
 				16C35CE52AFEC5AF00295D09 /* Views */,
+				16C35A162B02C25C0024A9B5 /* Extentions */,
 				16C35CDB2AFEC48800295D09 /* Assets.xcassets */,
 				16C35CDD2AFEC48800295D09 /* Preview Content */,
 			);
@@ -82,6 +108,7 @@
 				16C35CD92AFEC48600295D09 /* ContentView.swift */,
 				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
 				16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */,
+				16C35A192B02C8000024A9B5 /* NewSubscription.swift */,
 				16F1AD1A2B01811B007F2915 /* Settings.swift */,
 			);
 			path = Views;
@@ -91,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				16C35CEA2AFEC6E300295D09 /* Subscription.swift */,
+				16C35A142B02C0C90024A9B5 /* Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,12 +193,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */,
+				16C35A152B02C0C90024A9B5 /* Service.swift in Sources */,
+				16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */,
 				16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */,
 				16C35CED2AFECCBA00295D09 /* AddSubscription.swift in Sources */,
 				16C35CDA2AFEC48600295D09 /* ContentView.swift in Sources */,
 				16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */,
 				16C35CEB2AFEC6E300295D09 /* Subscription.swift in Sources */,
 				16C35CD82AFEC48600295D09 /* SubscriptionsApp.swift in Sources */,
+				16C35A1A2B02C8000024A9B5 /* NewSubscription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
