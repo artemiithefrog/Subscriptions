@@ -10,21 +10,37 @@ import SwiftUI
 struct AddSubscription: View {
     
     @Environment(\.dismiss) private var dismiss
+    private var services = ServicesViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                HStack {
-                    Text("Amazon AWS")
-                    Spacer()
-                    Image(systemName: "plus")
+                ForEach(services.servises) { service in
+                    NavigationLink {
+                        NewSubscription(service: service)
+                    } label: {
+                        HStack {
+                            Image(service.icon)
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                                .foregroundColor(service.color)
+                            Text(service.name)
+                                .bold()
+                                .foregroundColor(service.color)
+                            Spacer()
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(service.color)
+                        }
+                        .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(service.color), lineWidth: 1)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                    }
                 }
-                .padding(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.red, lineWidth: 1)
-                }
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
