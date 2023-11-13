@@ -12,12 +12,13 @@ struct AllSubscriptions: View {
     
     @Query private var subscriptions: [Subscription]
     @State private var showAddSubscriptionView = false
+    @State private var showSettingsView = false
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    
+                    showSettingsView = true
                 } label: {
                     Image(systemName: "gear")
                 }
@@ -31,7 +32,7 @@ struct AllSubscriptions: View {
                 Spacer()
                 
                 Button {
-                    
+                    showAddSubscriptionView = true
                 } label: {
                     Image(systemName: "plus")
                         .fontWeight(.medium)
@@ -72,6 +73,9 @@ struct AllSubscriptions: View {
         }
         .sheet(isPresented: $showAddSubscriptionView) {
             AddSubscription()
+        }
+        .sheet(isPresented: $showSettingsView) {
+            Settings()
         }
     }
 }

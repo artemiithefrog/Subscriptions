@@ -29,16 +29,16 @@ struct AddSubscription: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                      dismiss()
+                        dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                     }
                     .tint(.gray)
                 }
-//                ToolbarItem(placement: .principal) {
-//                    Text("Add Subscription")
-//                        .bold()
-//                }
+                ToolbarItem(placement: .principal) {
+                    Text("Add Subscription")
+                        .bold()
+                }
                 ToolbarItem(placement: .bottomBar) {
                     Button {
                         
@@ -49,8 +49,8 @@ struct AddSubscription: View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
