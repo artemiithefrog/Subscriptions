@@ -21,6 +21,8 @@ struct AllSubscriptions: View {
                     showSettingsView = true
                 } label: {
                     Image(systemName: "gear")
+                        .resizable()
+                        .frame(width: 25, height: 25)
                 }
                 .tint(.gray)
                 
@@ -28,6 +30,7 @@ struct AllSubscriptions: View {
                 
                 Text("All Subscriptions")
                     .fontWeight(.bold)
+                    .font(.system(size: 20))
                 
                 Spacer()
                 
@@ -35,6 +38,8 @@ struct AllSubscriptions: View {
                     showAddSubscriptionView = true
                 } label: {
                     Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 20, height: 20)
                         .fontWeight(.medium)
                 }
                 .tint(.gray)
