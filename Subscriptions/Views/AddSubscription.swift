@@ -54,6 +54,7 @@ struct AddSubscription: View {
                 ToolbarItem(placement: .principal) {
                     Text("Add Subscription")
                         .bold()
+                        .font(.system(size: 20))
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button {
