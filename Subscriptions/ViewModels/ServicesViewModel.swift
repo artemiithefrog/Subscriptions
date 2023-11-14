@@ -8,6 +8,22 @@
 import SwiftUI
 
 class ServicesViewModel {
-    var servises: [Service] = [Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium")]
+    var servises: [Service] = [
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"),
+        Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium")
+    ]
     
 }
