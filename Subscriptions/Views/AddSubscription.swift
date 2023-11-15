@@ -10,12 +10,14 @@ import SwiftUI
 struct AddSubscription: View {
     
     @Environment(\.dismiss) private var dismiss
+    @State var searchedService = ""
+    
     private var services = ServicesViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                ForEach(services.servises) { service in
+                ForEach(filteredServices) { service in
                     NavigationLink {
                         NewSubscription(service: service)
                     } label: {
@@ -42,6 +44,7 @@ struct AddSubscription: View {
                     }
                 }
             }
+            .searchable(text: $searchedService)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -67,6 +70,23 @@ struct AddSubscription: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    var filteredServices: [Service] {
+        if searchedService.isEmpty {
+            return services.servises
+        } else {
+            return services.servises.filter { service in
+                service.name.localizedCaseInsensitiveContains(searchedService) ||
+                service.icon.localizedCaseInsensitiveContains(searchedService)
+//                service.color.localizedCaseInsensitiveContains(searchedService)
+            }
+            
+//            return cells.cells.filter { cell in
+//                cell.name.localizedCaseInsensitiveContains(searchedText) ||
+//                cell.description.localizedCaseInsensitiveContains(searchedText)
+//            }
         }
     }
 }
