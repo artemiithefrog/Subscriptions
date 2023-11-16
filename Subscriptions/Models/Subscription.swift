@@ -13,10 +13,12 @@ class Subscription {
     var name: String
     var desc: String
     var icon: String
+    var color: String
     
-    init(name: String, desc: String, icon: String) {
+    init(name: String, desc: String, icon: String, color: String) {
         self.name = name
         self.desc = desc
         self.icon = icon
+        self.color = color
     }
 }
