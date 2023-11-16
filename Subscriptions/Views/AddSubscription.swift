@@ -19,7 +19,7 @@ struct AddSubscription: View {
             ScrollView {
                 ForEach(filteredServices) { service in
                     NavigationLink {
-                        NewSubscription(service: service)
+                        NewSubscription(service: service, name: service.name)
                     } label: {
                         HStack {
                             Image(service.icon)
@@ -80,13 +80,7 @@ struct AddSubscription: View {
             return services.servises.filter { service in
                 service.name.localizedCaseInsensitiveContains(searchedService) ||
                 service.icon.localizedCaseInsensitiveContains(searchedService)
-//                service.color.localizedCaseInsensitiveContains(searchedService)
             }
-            
-//            return cells.cells.filter { cell in
-//                cell.name.localizedCaseInsensitiveContains(searchedText) ||
-//                cell.description.localizedCaseInsensitiveContains(searchedText)
-//            }
         }
     }
 }
