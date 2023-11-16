@@ -13,5 +13,6 @@ struct SubscriptionsApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Subscription.self])
     }
 }
