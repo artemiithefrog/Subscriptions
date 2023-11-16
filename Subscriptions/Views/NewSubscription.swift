@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewSubscription: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     let service: Service
     
-    @State private var text: String = "Youtube Premium"
+    @State var name: String
     @State private var cost: String = ""
     @State private var description: String = ""
     @State private var notes: String = ""
+    
+    @State private var isAddButtonDisabled = true
     
     @FocusState private var costIsFocused: Bool
     @FocusState private var nameIsFocused: Bool
@@ -29,7 +33,7 @@ struct NewSubscription: View {
                     HStack {
                         Text("Name")
                         Spacer()
-                        TextField("Name", text: $text)
+                        TextField("Name", text: $name)
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($nameIsFocused)
@@ -42,6 +46,13 @@ struct NewSubscription: View {
                             .tint(Color("ButtonTextGreen"))
                             .keyboardType(.numberPad)
                             .focused($costIsFocused)
+                            .onChange(of: cost) {
+                                if cost.isEmpty {
+                                    isAddButtonDisabled = true
+                                } else {
+                                    isAddButtonDisabled = false
+                                }
+                            }
                     }
                     HStack {
                         Text("Description")
@@ -110,11 +121,21 @@ struct NewSubscription: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    
+                    if cost.isEmpty {
+                        
+                    } else {
+                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
+                        let subscription = Subscription(name: name, desc: description, icon: service.icon, color: service.color.toHexString())
+                        context.insert(subscription)
+                        cost = ""
+                        description = ""
+                        notes = ""
+                    }
                 } label: {
                     Text("Add")
                 }
-                .tint(Color("ButtonTextGreen"))
+                .disabled(isAddButtonDisabled)
+                .tint(isAddButtonDisabled ? .gray : Color("ButtonTextGreen"))
             }
             ToolbarItem(placement: .keyboard) {
                 HStack {
@@ -139,5 +160,5 @@ struct NewSubscription: View {
 }
 
 #Preview {
-    NewSubscription(service: Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"))
+    NewSubscription(service: Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"), name: "Youtube Premium")
 }
