@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F18512B07B4CA005B4140 /* NotificationHandler.swift */; };
+		162CC18E2B065FD000685121 /* EditSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CC18D2B065FD000685121 /* EditSubscription.swift */; };
 		16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */; };
 		16C35A152B02C0C90024A9B5 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A142B02C0C90024A9B5 /* Service.swift */; };
 		16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A172B02C26F0024A9B5 /* Color+Ext.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161F18512B07B4CA005B4140 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		162CC18D2B065FD000685121 /* EditSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscription.swift; sourceTree = "<group>"; };
 		16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
 		16C35A142B02C0C90024A9B5 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		16C35A172B02C26F0024A9B5 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -48,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		161F18502B07B4BC005B4140 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				161F18512B07B4CA005B4140 /* NotificationHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
 		16C35A112B02C0810024A9B5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				16C35CD72AFEC48600295D09 /* SubscriptionsApp.swift */,
+				161F18502B07B4BC005B4140 /* Handlers */,
 				16C35A112B02C0810024A9B5 /* ViewModels */,
 				16C35CE92AFEC6C000295D09 /* Models */,
 				16C35CE52AFEC5AF00295D09 /* Views */,
@@ -109,6 +122,7 @@
 				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
 				16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */,
 				16C35A192B02C8000024A9B5 /* NewSubscription.swift */,
+				162CC18D2B065FD000685121 /* EditSubscription.swift */,
 				16F1AD1A2B01811B007F2915 /* Settings.swift */,
 			);
 			path = Views;
@@ -194,9 +208,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */,
+				161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */,
 				16C35A152B02C0C90024A9B5 /* Service.swift in Sources */,
 				16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */,
 				16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */,
+				162CC18E2B065FD000685121 /* EditSubscription.swift in Sources */,
 				16C35CED2AFECCBA00295D09 /* AddSubscription.swift in Sources */,
 				16C35CDA2AFEC48600295D09 /* ContentView.swift in Sources */,
 				16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */,
