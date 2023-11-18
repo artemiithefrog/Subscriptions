@@ -55,6 +55,9 @@ struct NewSubscription: View {
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($nameIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                            }
                     }
                     HStack {
                         Text("Cost")
@@ -71,6 +74,9 @@ struct NewSubscription: View {
                                     isAddButtonDisabled = false
                                 }
                             }
+                            .onTapGesture {
+                                showSheet = false
+                            }
                     }
                     HStack {
                         Text("Description")
@@ -79,6 +85,9 @@ struct NewSubscription: View {
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($descriptionIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                            }
                     }
                 } header: {
                     HStack {
@@ -121,6 +130,10 @@ struct NewSubscription: View {
                         withAnimation {
                             showSheet = true
                             showCycle = true
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
                         }
                     }
                     
@@ -142,6 +155,10 @@ struct NewSubscription: View {
                         withAnimation {
                             showSheet = true
                             showAlert = true
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
                         }
                     }
                     
@@ -152,11 +169,15 @@ struct NewSubscription: View {
                         TextField("Enter Notes", text: $notes)
                             .tint(Color("ButtonTextGreen"))
                             .focused($notesIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                            }
                     }
                 }
             }
             .listStyle(InsetGroupedListStyle())
             
+//            sheet with pickers
             if showSheet {
                 VStack {
                     HStack {
@@ -183,7 +204,6 @@ struct NewSubscription: View {
                 .frame(height: UIScreen.main.bounds.height / 3)
                 .transition(.move(edge: .bottom))
             }
-
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
