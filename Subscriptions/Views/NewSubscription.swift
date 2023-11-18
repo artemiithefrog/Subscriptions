@@ -13,12 +13,30 @@ struct NewSubscription: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     let service: Service
+    let notificationHandler = NotificationHandler()
     
     @State var name: String
     @State private var cost: String = ""
     @State private var description: String = ""
     @State private var notes: String = ""
     
+    @State private var firstBillDate = Date()
+    @State private var cycle = "Monthly"
+    @State private var alert = "None"
+    
+    @State private var selectedCycle = "Every"
+    @State private var selectedCyclePeriod = 1
+    @State private var selectedCycleDate = "Month(s)"
+    
+    @State private var selectedDay = ""
+    @State private var selectedDate = 31
+    @State private var selectedTime = ""
+    
+    @State private var showSheet = false
+    @State private var showCycle = false
+    @State private var showAlert = false
+    
+    @State private var notificationId = ""
     @State private var isAddButtonDisabled = true
     
     @FocusState private var costIsFocused: Bool
@@ -89,15 +107,44 @@ struct NewSubscription: View {
                     HStack {
                         Text("First Bill Date")
                         Spacer()
+                        DatePicker("", selection: $firstBillDate, displayedComponents: .date)
+                            .tint(.green)
                     }
+                    
                     HStack {
                         Text("Cycle")
                         Spacer()
+                        Text("Every \(selectedCyclePeriod) \(selectedCycleDate)")
+                            .bold()
                     }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showCycle = true
+                        }
+                    }
+                    
                     HStack {
                         Text("Alert")
                         Spacer()
+                        if selectedDate == 31 {
+                            Text("Never")
+                                .fontWeight(.bold)
+                        } else if selectedDate == 32 {
+                            Text("Same day")
+                                .fontWeight(.bold)
+                        } else {
+                            Text("\(selectedDate) \(selectedDay) \(selectedTime)")
+                                .fontWeight(.bold)
+                        }
                     }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showAlert = true
+                        }
+                    }
+                    
                     VStack(alignment: .leading) {
                         Text("Notes")
                             .padding(.bottom, -10)
@@ -109,6 +156,34 @@ struct NewSubscription: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
+            
+            if showSheet {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                showSheet = false
+                                showCycle = false
+                                showAlert = false
+                            }
+                        } label: {
+                            Text("Done")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                        }
+                    }
+                    .padding()
+                    if showCycle {
+                        CyclePicker(selectedCycle: $selectedCycle, selectedCyclePeriod: $selectedCyclePeriod, selectedCycleDate: $selectedCycleDate)
+                    } else {
+                        AlertPicker(selectedDate: $selectedDate, selectedDay: $selectedDay, selectedTime: $selectedTime)
+                    }
+                }
+                .frame(height: UIScreen.main.bounds.height / 3)
+                .transition(.move(edge: .bottom))
+            }
+
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -124,12 +199,21 @@ struct NewSubscription: View {
                     if cost.isEmpty {
                         
                     } else {
-                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
-                        let subscription = Subscription(name: name, desc: description, icon: service.icon, color: service.color.toHexString())
+                        notificationHandler.askPermission()
+                        notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
+                                                                                             date: selectedCycleDate,
+                                                                                             from: firstBillDate,
+                                                                                             nextNotificationDay: selectedDay,
+                                                                                             nextNotificationInterval: selectedDate,
+                                                                                             repeats: true,
+                                                                                             title: "\(name)'s bill",
+                                                                                             body: "This is notification from subscription manager, you'll pay \(cost)")
+                        let subscription = Subscription(name: name, desc: description, icon: service.icon, color: service.color.toHexString(), cost: cost, notificationId: notificationId)
                         context.insert(subscription)
                         cost = ""
                         description = ""
                         notes = ""
+                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
                     }
                 } label: {
                     Text("Add")
