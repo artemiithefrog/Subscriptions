@@ -15,7 +15,7 @@ struct AllSubscriptions: View {
     @State private var showSettingsView = false
     
     var body: some View {
-        VStack {
+        NavigationStack {
             HStack {
                 Button {
                     showSettingsView = true
@@ -72,34 +72,35 @@ struct AllSubscriptions: View {
                     Spacer()
                 }
             } else {
-
                 List(subscriptions) { subscription in
-                    HStack {
-                        Image(subscription.icon)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(Color(hex: subscription.color))
+                    NavigationLink {
+                        EditSubscription(susbcription: subscription)
+                    } label: {
+                        HStack {
+                            Image(subscription.icon)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color(hex: subscription.color))
 
-                        VStack(alignment: .leading) {
-                            if subscription.desc.isEmpty {
-                                Text(subscription.name)
-                            } else {
-                                Text(subscription.name)
-                                Text(subscription.desc)
+                            VStack(alignment: .leading) {
+                                if subscription.desc.isEmpty {
+                                    Text(subscription.name)
+                                } else {
+                                    Text(subscription.name)
+                                    Text(subscription.desc)
+                                        .font(.subheadline)
+                                        .foregroundColor(Color.gray)
+                                }
+                            }
+                            Spacer()
+                            VStack(alignment: .trailing) {
+                                Text("$\(subscription.cost)")
+                                    .font(.callout)
+                                Text("28 Days")
                                     .font(.subheadline)
                                     .foregroundColor(Color.gray)
                             }
                         }
-                        Spacer()
-                        VStack(alignment: .trailing) {
-                            Text("$0.00")
-                                .font(.callout)
-                            Text("28 Days")
-                                .font(.subheadline)
-                                .foregroundColor(Color.gray)
-                        }
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(Color("ButtonTextGreen"))
                     }
                 }
             }
