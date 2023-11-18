@@ -12,6 +12,7 @@ struct SubscriptionsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light)
         }
         .modelContainer(for: [Subscription.self])
     }
