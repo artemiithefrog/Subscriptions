@@ -74,7 +74,20 @@ struct AllSubscriptions: View {
             } else {
                 List(subscriptions) { subscription in
                     NavigationLink {
-                        EditSubscription(susbcription: subscription)
+                        EditSubscription(selectedSubscription: subscription,
+                                         name: subscription.name,
+                                         cost: subscription.cost,
+                                         description: subscription.desc,
+                                         notes: subscription.notes,
+                                         color: Color(hex: subscription.color),
+                                         icon: subscription.icon,
+                                         firstBillDate: subscription.firstBillDate,
+                                         selectedCycle: subscription.selectedCycle,
+                                         selectedCyclePeriod: subscription.selectedCyclePeriod,
+                                         selectedCycleDate: subscription.selectedCycleDate,
+                                         selectedDay: subscription.selectedDay,
+                                         selectedDate: subscription.selectedDate,
+                                         selectedTime: subscription.selectedTime)
                     } label: {
                         HStack {
                             Image(subscription.icon)

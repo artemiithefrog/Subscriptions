@@ -11,35 +11,64 @@ struct EditSubscription: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
+    let notificationHandler = NotificationHandler()
+    let selectedSubscription: Subscription
     
-    let susbcription: Subscription
+    @State var name: String
+    @State var cost: String
+    @State var description: String
+    @State var notes: String
+    @State var color: Color
+    @State var icon: String
     
-    @State var name: String = ""
-    @State private var cost: String = ""
-    @State private var description: String = ""
-    @State private var notes: String = ""
+    @State var firstBillDate: Date
     
-    @State private var isSaveButtonDisabled = true
+    @State var selectedCycle: String
+    @State var selectedCyclePeriod: Int
+    @State var selectedCycleDate: String
+    
+    @State var selectedDay: String
+    @State var selectedDate: Int
+    @State var selectedTime: String
+    
+    @State private var showSheet = false
+    @State private var showCycle = false
+    @State private var showAlert = false
+    @State private var showFirstBillDate = false
+    @State private var costIsEmpty = false
+    
+    @State private var notificationId = ""
     
     @FocusState private var costIsFocused: Bool
     @FocusState private var nameIsFocused: Bool
     @FocusState private var descriptionIsFocused: Bool
-    @FocusState private var notesIsFocused :Bool
+    @FocusState private var notesIsFocused: Bool
+
     
     var body: some View {
+        
         NavigationStack {
             List {
                 Section {
                     HStack {
                         Text("Name")
+                            .bold(nameIsFocused ? true : false)
                         Spacer()
                         TextField("Name", text: $name)
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($nameIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
+                            }
+                            .opacity(nameIsFocused ? 1 : 0.4)
                     }
                     HStack {
                         Text("Cost")
+                            .bold(costIsFocused ? true : false)
                         Spacer()
                         TextField("Cost", text: $cost)
                             .multilineTextAlignment(.trailing)
@@ -48,29 +77,44 @@ struct EditSubscription: View {
                             .focused($costIsFocused)
                             .onChange(of: cost) {
                                 if cost.isEmpty {
-                                    isSaveButtonDisabled = true
+                                    costIsEmpty = true
                                 } else {
-                                    isSaveButtonDisabled = false
+                                    costIsEmpty = false
                                 }
                             }
+                            .onTapGesture {
+                                showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
+                            }
+                            .opacity(costIsFocused ? 1 : 0.4)
                     }
                     HStack {
                         Text("Description")
+                            .bold(descriptionIsFocused ? true : false)
                         Spacer()
                         TextField("Description", text: $description)
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($descriptionIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
+                            }
+                            .opacity(descriptionIsFocused ? 1 : 0.4)
                     }
                 } header: {
                     HStack {
                         Spacer()
                         VStack {
-                            Image(susbcription.icon)
+                            Image(icon)
                                 .resizable()
                                 .frame(width: 80, height: 80)
-                                .foregroundColor(Color(susbcription.color))
-                            Text(susbcription.name)
+                                .foregroundColor(color)
+                            Text(name)
                                 .foregroundColor(.black)
                                 .font(.system(size: 18))
                                 .bold()
@@ -85,30 +129,136 @@ struct EditSubscription: View {
                     HStack {
                         Text("Color")
                         Spacer()
+                        ColorPicker("", selection: $color)
                     }
                     HStack {
                         Text("First Bill Date")
+                            .bold(showFirstBillDate ? true : false)
                         Spacer()
+                        Text("\(firstBillDate.formatted(date: .long, time: .omitted))")
+                            .opacity(showFirstBillDate ? 1 : 0.4)
                     }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showFirstBillDate = true
+                            showCycle = false
+                            showAlert = false
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
+                        }
+                    }
+                    
                     HStack {
                         Text("Cycle")
+                            .bold(showCycle ? true : false)
                         Spacer()
+                        Text("Every \(selectedCyclePeriod) \(selectedCycleDate)")
+                            .opacity(showCycle ? 1 : 0.4)
                     }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showCycle = true
+                            showAlert = false
+                            showFirstBillDate = false
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
+                        }
+                    }
+                    
                     HStack {
                         Text("Alert")
+                            .bold(showAlert ? true : false)
                         Spacer()
+                        if selectedDate == 31 {
+                            Text("Never")
+                                .opacity(showAlert ? 1 : 0.4)
+                        } else if selectedDate == 32 {
+                            Text("Same day")
+                                .opacity(showAlert ? 1 : 0.4)
+                        } else {
+                            Text("\(selectedDate) \(selectedDay) \(selectedTime)")
+                                .opacity(showAlert ? 1 : 0.4)
+                        }
                     }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showAlert = true
+                            showCycle = false
+                            showFirstBillDate = false
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
+                        }
+                    }
+                    
                     VStack(alignment: .leading) {
                         Text("Notes")
                             .padding(.bottom, -10)
+                            .bold(notesIsFocused ? true : false)
                         Spacer()
                         TextField("Enter Notes", text: $notes)
                             .tint(Color("ButtonTextGreen"))
                             .focused($notesIsFocused)
+                            .onTapGesture {
+                                showSheet = false
+                            }
+                            .opacity(notesIsFocused ? 1 : 0.4)
+                    }
+                }
+                Section {
+                    Button {
+                        dismiss()
+                        context.delete(selectedSubscription)
+                        notificationHandler.deleteNotification(id: notificationId)
+                        print("Subscription deleted \(selectedSubscription)")
+                    } label: {
+                        Text("delete subscription")
                     }
                 }
             }
             .listStyle(InsetGroupedListStyle())
+            
+//            sheet with pickers
+            if showSheet {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                showSheet = false
+                                showCycle = false
+                                showAlert = false
+                                showFirstBillDate = false
+                            }
+                        } label: {
+                            Text("Done")
+                                .foregroundColor(.black)
+                                .font(.system(size: 20))
+                        }
+                    }
+                    .padding()
+                    
+                    if showFirstBillDate {
+                        DatePicker("", selection: $firstBillDate, displayedComponents: .date)
+                            .labelsHidden()
+                            .datePickerStyle(.wheel)
+                    } else if showCycle {
+                        CyclePicker(selectedCycle: $selectedCycle, selectedCyclePeriod: $selectedCyclePeriod, selectedCycleDate: $selectedCycleDate)
+                    } else {
+                        AlertPicker(selectedDate: $selectedDate, selectedDay: $selectedDay, selectedTime: $selectedTime)
+                    }
+                }
+                .frame(height: UIScreen.main.bounds.height / 3)
+                .transition(.move(edge: .bottom))
+            }
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -124,18 +274,42 @@ struct EditSubscription: View {
                     if cost.isEmpty {
                         
                     } else {
-                        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
-//                        let subscription = Subscription(name: name, desc: description, icon: susbcription.icon, color: susbcription.color, notificationId: String)
-//                        context.insert(subscription)
+                        notificationHandler.askPermission()
+                        notificationHandler.deleteNotification(id: notificationId)
+                        notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
+                                                                                             date: selectedCycleDate,
+                                                                                             from: firstBillDate,
+                                                                                             nextNotificationDay: selectedDay,
+                                                                                             nextNotificationInterval: selectedDate,
+                                                                                             repeats: true,
+                                                                                             title: "\(name)'s bill",
+                                                                                             body: "This is notification from subscription manager, you'll pay \(cost)")
+                        let subscription = Subscription(name: name,
+                                                        cost: cost,
+                                                        desc: description,
+                                                        icon: icon,
+                                                        color: color.toHexString(),
+                                                        notes: notes,
+                                                        firstBillDate: firstBillDate,
+                                                        selectedCycle: selectedCycle,
+                                                        selectedCyclePeriod: selectedCyclePeriod,
+                                                        selectedCycleDate: selectedCycleDate,
+                                                        selectedDay: selectedDay,
+                                                        selectedDate: selectedDate,
+                                                        selectedTime: selectedTime,
+                                                        notificationId: notificationId)
+                        context.delete(selectedSubscription)
+                        context.insert(subscription)
                         cost = ""
                         description = ""
                         notes = ""
+                        dismiss()
                     }
                 } label: {
                     Text("Save")
                 }
-                .disabled(isSaveButtonDisabled)
-                .tint(isSaveButtonDisabled ? .gray : Color("ButtonTextGreen"))
+                .disabled(costIsEmpty)
+                .tint(costIsEmpty ? .gray : Color("ButtonTextGreen"))
             }
             ToolbarItem(placement: .keyboard) {
                 HStack {
@@ -156,9 +330,10 @@ struct EditSubscription: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
+        
     }
 }
 
-#Preview {
-    EditSubscription(susbcription: Subscription(name: "YouTube Premium", desc: "description", icon: "youtube", color: "#F61D0D", cost: "10", notificationId: ""))
-}
+//#Preview {
+//    EditSubscription()
+//}
