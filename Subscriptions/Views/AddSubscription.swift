@@ -19,7 +19,7 @@ struct AddSubscription: View {
             ScrollView {
                 ForEach(filteredServices) { service in
                     NavigationLink {
-                        NewSubscription(service: service, name: service.name)
+                        NewSubscription(service: service, name: service.name, color: service.color)
                     } label: {
                         HStack {
                             Image(service.icon)
