@@ -16,13 +16,12 @@ struct NewSubscription: View {
     let notificationHandler = NotificationHandler()
     
     @State var name: String
+    @State var color: Color
     @State private var cost: String = ""
     @State private var description: String = ""
     @State private var notes: String = ""
     
     @State private var firstBillDate = Date()
-    @State private var cycle = "Monthly"
-    @State private var alert = "None"
     
     @State private var selectedCycle = "Every"
     @State private var selectedCyclePeriod = 1
@@ -35,6 +34,7 @@ struct NewSubscription: View {
     @State private var showSheet = false
     @State private var showCycle = false
     @State private var showAlert = false
+    @State private var showFirstBillDate = false
     
     @State private var notificationId = ""
     @State private var isAddButtonDisabled = true
@@ -42,7 +42,7 @@ struct NewSubscription: View {
     @FocusState private var costIsFocused: Bool
     @FocusState private var nameIsFocused: Bool
     @FocusState private var descriptionIsFocused: Bool
-    @FocusState private var notesIsFocused :Bool
+    @FocusState private var notesIsFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -50,6 +50,7 @@ struct NewSubscription: View {
                 Section {
                     HStack {
                         Text("Name")
+                            .bold(nameIsFocused ? true : false)
                         Spacer()
                         TextField("Name", text: $name)
                             .multilineTextAlignment(.trailing)
@@ -57,10 +58,15 @@ struct NewSubscription: View {
                             .focused($nameIsFocused)
                             .onTapGesture {
                                 showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
                             }
+                            .opacity(nameIsFocused ? 1 : 0.4)
                     }
                     HStack {
                         Text("Cost")
+                            .bold(costIsFocused ? true : false)
                         Spacer()
                         TextField("Cost", text: $cost)
                             .multilineTextAlignment(.trailing)
@@ -76,10 +82,15 @@ struct NewSubscription: View {
                             }
                             .onTapGesture {
                                 showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
                             }
+                            .opacity(costIsFocused ? 1 : 0.4)
                     }
                     HStack {
                         Text("Description")
+                            .bold(descriptionIsFocused ? true : false)
                         Spacer()
                         TextField("Description", text: $description)
                             .multilineTextAlignment(.trailing)
@@ -87,7 +98,11 @@ struct NewSubscription: View {
                             .focused($descriptionIsFocused)
                             .onTapGesture {
                                 showSheet = false
+                                showAlert = false
+                                showCycle = false
+                                showFirstBillDate = false
                             }
+                            .opacity(descriptionIsFocused ? 1 : 0.4)
                     }
                 } header: {
                     HStack {
@@ -96,7 +111,7 @@ struct NewSubscription: View {
                             Image(service.icon)
                                 .resizable()
                                 .frame(width: 80, height: 80)
-                                .foregroundColor(Color(service.color))
+                                .foregroundColor(color)
                             Text(service.name)
                                 .foregroundColor(.black)
                                 .font(.system(size: 18))
@@ -112,24 +127,41 @@ struct NewSubscription: View {
                     HStack {
                         Text("Color")
                         Spacer()
+                        ColorPicker("", selection: $color)
                     }
                     HStack {
                         Text("First Bill Date")
+                            .bold(showFirstBillDate ? true : false)
                         Spacer()
-                        DatePicker("", selection: $firstBillDate, displayedComponents: .date)
-                            .tint(.green)
+                        Text("\(firstBillDate.formatted(date: .long, time: .omitted))")
+                            .opacity(showFirstBillDate ? 1 : 0.4)
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            showSheet = true
+                            showFirstBillDate = true
+                            showCycle = false
+                            showAlert = false
+                            costIsFocused = false
+                            nameIsFocused = false
+                            descriptionIsFocused = false
+                            notesIsFocused = false
+                        }
                     }
                     
                     HStack {
                         Text("Cycle")
+                            .bold(showCycle ? true : false)
                         Spacer()
                         Text("Every \(selectedCyclePeriod) \(selectedCycleDate)")
-                            .bold()
+                            .opacity(showCycle ? 1 : 0.4)
                     }
                     .onTapGesture {
                         withAnimation {
                             showSheet = true
                             showCycle = true
+                            showAlert = false
+                            showFirstBillDate = false
                             costIsFocused = false
                             nameIsFocused = false
                             descriptionIsFocused = false
@@ -139,22 +171,25 @@ struct NewSubscription: View {
                     
                     HStack {
                         Text("Alert")
+                            .bold(showAlert ? true : false)
                         Spacer()
                         if selectedDate == 31 {
                             Text("Never")
-                                .fontWeight(.bold)
+                                .opacity(showAlert ? 1 : 0.4)
                         } else if selectedDate == 32 {
                             Text("Same day")
-                                .fontWeight(.bold)
+                                .opacity(showAlert ? 1 : 0.4)
                         } else {
                             Text("\(selectedDate) \(selectedDay) \(selectedTime)")
-                                .fontWeight(.bold)
+                                .opacity(showAlert ? 1 : 0.4)
                         }
                     }
                     .onTapGesture {
                         withAnimation {
                             showSheet = true
                             showAlert = true
+                            showCycle = false
+                            showFirstBillDate = false
                             costIsFocused = false
                             nameIsFocused = false
                             descriptionIsFocused = false
@@ -165,6 +200,7 @@ struct NewSubscription: View {
                     VStack(alignment: .leading) {
                         Text("Notes")
                             .padding(.bottom, -10)
+                            .bold(notesIsFocused ? true : false)
                         Spacer()
                         TextField("Enter Notes", text: $notes)
                             .tint(Color("ButtonTextGreen"))
@@ -172,6 +208,7 @@ struct NewSubscription: View {
                             .onTapGesture {
                                 showSheet = false
                             }
+                            .opacity(notesIsFocused ? 1 : 0.4)
                     }
                 }
             }
@@ -187,6 +224,7 @@ struct NewSubscription: View {
                                 showSheet = false
                                 showCycle = false
                                 showAlert = false
+                                showFirstBillDate = false
                             }
                         } label: {
                             Text("Done")
@@ -195,7 +233,12 @@ struct NewSubscription: View {
                         }
                     }
                     .padding()
-                    if showCycle {
+                    
+                    if showFirstBillDate {
+                        DatePicker("", selection: $firstBillDate, displayedComponents: .date)
+                            .labelsHidden()
+                            .datePickerStyle(.wheel)
+                    } else if showCycle {
                         CyclePicker(selectedCycle: $selectedCycle, selectedCyclePeriod: $selectedCyclePeriod, selectedCycleDate: $selectedCycleDate)
                     } else {
                         AlertPicker(selectedDate: $selectedDate, selectedDay: $selectedDay, selectedTime: $selectedTime)
@@ -220,6 +263,7 @@ struct NewSubscription: View {
                         
                     } else {
                         notificationHandler.askPermission()
+                        notificationHandler.deleteNotification(id: notificationId)
                         notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
                                                                                              date: selectedCycleDate,
                                                                                              from: firstBillDate,
@@ -228,7 +272,20 @@ struct NewSubscription: View {
                                                                                              repeats: true,
                                                                                              title: "\(name)'s bill",
                                                                                              body: "This is notification from subscription manager, you'll pay \(cost)")
-                        let subscription = Subscription(name: name, desc: description, icon: service.icon, color: service.color.toHexString(), cost: cost, notificationId: notificationId)
+                        let subscription = Subscription(name: name,
+                                                        cost: cost,
+                                                        desc: description,
+                                                        icon: service.icon,
+                                                        color: color.toHexString(),
+                                                        notes: notes,
+                                                        firstBillDate: firstBillDate,
+                                                        selectedCycle: selectedCycle,
+                                                        selectedCyclePeriod: selectedCyclePeriod,
+                                                        selectedCycleDate: selectedCycleDate,
+                                                        selectedDay: selectedDay,
+                                                        selectedDate: selectedDate,
+                                                        selectedTime: selectedTime,
+                                                        notificationId: notificationId)
                         context.insert(subscription)
                         cost = ""
                         description = ""
@@ -264,5 +321,5 @@ struct NewSubscription: View {
 }
 
 #Preview {
-    NewSubscription(service: Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"), name: "Youtube Premium")
+    NewSubscription(service: Service(icon: "youtube", color: Color(hex: "F61D0D"), name: "Youtube Premium"), name: "Youtube Premium", color: Color(hex: "F61D0D"))
 }
