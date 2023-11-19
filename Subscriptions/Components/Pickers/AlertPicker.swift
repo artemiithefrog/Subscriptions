@@ -41,8 +41,8 @@ struct AlertPicker: View {
                 }
                 .pickerStyle(.wheel)
             }
-            .onChange(of: selectedDate) { value in
-                if value < 31 {
+            .onChange(of: selectedDate) { 
+                if selectedDate < 31 {
                     withAnimation {
                         if selectedDay == "" {
                             selectedDay = "Day(s)"
@@ -62,7 +62,7 @@ struct AlertPicker: View {
                     }
                 }
             }
-            .onChange(of: selectedDay) { value in
+            .onChange(of: selectedDay) {
                 if selectedDay == "Day(s)" || selectedDay == "Week(s)" || selectedDay == "Month(s)" || selectedDay == "Year(s)" {
                     withAnimation {
                         if selectedDate > 30 {
@@ -80,7 +80,7 @@ struct AlertPicker: View {
                     }
                 }
             }
-            .onChange(of: selectedTime) { value in
+            .onChange(of: selectedTime) {
                 if selectedTime == "before" {
                     withAnimation {
                         if selectedDate > 31 {
