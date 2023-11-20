@@ -60,8 +60,8 @@ struct AddSubscription: View {
                         .font(.system(size: 20))
                 }
                 ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        
+                    NavigationLink {
+                        CustomSubscription()
                     } label: {
                         Text("Create Custom Subscription")
                             .bold()
