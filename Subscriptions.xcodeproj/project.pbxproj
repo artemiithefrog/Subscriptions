@@ -23,6 +23,7 @@
 		16CEFB3A2B0808710074F020 /* CyclePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEFB392B0808710074F020 /* CyclePicker.swift */; };
 		16CEFB3C2B0808800074F020 /* AlertPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEFB3B2B0808800074F020 /* AlertPicker.swift */; };
 		16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F1AD1A2B01811B007F2915 /* Settings.swift */; };
+		16FDA5422B0B87EF005B092E /* CustomSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FDA5412B0B87EF005B092E /* CustomSubscription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		16CEFB392B0808710074F020 /* CyclePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclePicker.swift; sourceTree = "<group>"; };
 		16CEFB3B2B0808800074F020 /* AlertPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPicker.swift; sourceTree = "<group>"; };
 		16F1AD1A2B01811B007F2915 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		16FDA5412B0B87EF005B092E /* CustomSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubscription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
 				16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */,
 				16C35A192B02C8000024A9B5 /* NewSubscription.swift */,
+				16FDA5412B0B87EF005B092E /* CustomSubscription.swift */,
 				162CC18D2B065FD000685121 /* EditSubscription.swift */,
 				16F1AD1A2B01811B007F2915 /* Settings.swift */,
 			);
@@ -234,6 +237,7 @@
 				161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */,
 				16C35A152B02C0C90024A9B5 /* Service.swift in Sources */,
 				16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */,
+				16FDA5422B0B87EF005B092E /* CustomSubscription.swift in Sources */,
 				16F1AD1B2B01811B007F2915 /* Settings.swift in Sources */,
 				16CEFB3C2B0808800074F020 /* AlertPicker.swift in Sources */,
 				162CC18E2B065FD000685121 /* EditSubscription.swift in Sources */,
