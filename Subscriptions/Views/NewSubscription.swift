@@ -213,40 +213,37 @@ struct NewSubscription: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            
-//            sheet with pickers
-            if showSheet {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            withAnimation {
-                                showSheet = false
-                                showCycle = false
-                                showAlert = false
-                                showFirstBillDate = false
-                            }
-                        } label: {
-                            Text("Done")
-                                .foregroundColor(.black)
-                                .font(.system(size: 20))
+        }
+        .sheet(isPresented: $showSheet) {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            showSheet = false
+                            showCycle = false
+                            showAlert = false
+                            showFirstBillDate = false
                         }
-                    }
-                    .padding()
-                    
-                    if showFirstBillDate {
-                        DatePicker("", selection: $firstBillDate, displayedComponents: .date)
-                            .labelsHidden()
-                            .datePickerStyle(.wheel)
-                    } else if showCycle {
-                        CyclePicker(selectedCycle: $selectedCycle, selectedCyclePeriod: $selectedCyclePeriod, selectedCycleDate: $selectedCycleDate)
-                    } else {
-                        AlertPicker(selectedDate: $selectedDate, selectedDay: $selectedDay, selectedTime: $selectedTime)
+                    } label: {
+                        Text("Done")
+                            .foregroundColor(.black)
+                            .font(.system(size: 20))
                     }
                 }
-                .frame(height: UIScreen.main.bounds.height / 3)
-                .transition(.move(edge: .bottom))
+                .padding()
+                
+                if showFirstBillDate {
+                    DatePicker("", selection: $firstBillDate, displayedComponents: .date)
+                        .labelsHidden()
+                        .datePickerStyle(.wheel)
+                } else if showCycle {
+                    CyclePicker(selectedCycle: $selectedCycle, selectedCyclePeriod: $selectedCyclePeriod, selectedCycleDate: $selectedCycleDate)
+                } else {
+                    AlertPicker(selectedDate: $selectedDate, selectedDay: $selectedDay, selectedTime: $selectedTime)
+                }
             }
+            .presentationDetents([.height(UIScreen.main.bounds.height / 3)])
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
