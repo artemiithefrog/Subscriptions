@@ -10,10 +10,35 @@ import SwiftUI
 struct CustomSubscriptionIcon: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var selectedIcon: SelectedIcon
+    let icons = ["envelope", "heart", "home", "marker-2", "marker", "phone-call", "play", "settings", "user"]
+    let columns = [
+        GridItem(.adaptive(minimum: 80))
+    ]
     
     var body: some View {
         NavigationStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(icons, id: \.self) { icon in
+                        Image(icon)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding(25)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(.gray, lineWidth: 1)
+                                    .opacity(0.5)
+                            }
+                            .onTapGesture {
+                                selectedIcon.selectedIcon = icon
+                                print(icon)
+                                dismiss()
+                            }
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -28,6 +53,10 @@ struct CustomSubscriptionIcon: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
     }
+}
+
+class SelectedIcon: ObservableObject {
+    @Published var selectedIcon = "marker"
 }
 
 #Preview {
