@@ -12,13 +12,13 @@ struct CustomSubscription: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     let notificationHandler = NotificationHandler()
+    @StateObject var selectedIcon = SelectedIcon()
     
     @State private var name: String = ""
     @State private var color: Color = Color(.blue)
     @State private var cost: String = ""
     @State private var description: String = ""
     @State private var notes: String = ""
-    @State private var icon: String = "heart"
     
     @State private var firstBillDate = Date()
     
@@ -55,6 +55,13 @@ struct CustomSubscription: View {
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
                             .focused($nameIsFocused)
+                            .onChange(of: name) {
+                                if cost.isEmpty || name.isEmpty {
+                                    isAddButtonDisabled = true
+                                } else {
+                                    isAddButtonDisabled = false
+                                }
+                            }
                             .onTapGesture {
                                 showSheet = false
                                 showAlert = false
@@ -73,7 +80,7 @@ struct CustomSubscription: View {
                             .keyboardType(.numberPad)
                             .focused($costIsFocused)
                             .onChange(of: cost) {
-                                if cost.isEmpty {
+                                if cost.isEmpty || name.isEmpty {
                                     isAddButtonDisabled = true
                                 } else {
                                     isAddButtonDisabled = false
@@ -107,7 +114,7 @@ struct CustomSubscription: View {
                     HStack {
                         Spacer()
                         VStack {
-                            Image(icon)
+                            Image(selectedIcon.selectedIcon)
                                 .resizable()
                                 .frame(width: 80, height: 80)
                                 .foregroundColor(color)
@@ -124,11 +131,12 @@ struct CustomSubscription: View {
                 Section {
                     NavigationLink {
                         CustomSubscriptionIcon()
+                            .environmentObject(selectedIcon)
                     } label: {
                         HStack {
                             Text("Icon")
                             Spacer()
-                            Image(icon)
+                            Image(selectedIcon.selectedIcon)
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(color)
@@ -266,7 +274,7 @@ struct CustomSubscription: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    if cost.isEmpty {
+                    if cost.isEmpty || name.isEmpty {
                         
                     } else {
                         notificationHandler.askPermission()
@@ -282,7 +290,7 @@ struct CustomSubscription: View {
                         let subscription = Subscription(name: name,
                                                         cost: cost,
                                                         desc: description,
-                                                        icon: icon,
+                                                        icon: selectedIcon.selectedIcon,
                                                         color: color.toHexString(),
                                                         notes: notes,
                                                         firstBillDate: firstBillDate,
@@ -300,7 +308,7 @@ struct CustomSubscription: View {
                         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: true, completion: nil)
                     }
                 } label: {
-                    Text("Add")
+                    Text("Create")
                 }
                 .disabled(isAddButtonDisabled)
                 .tint(isAddButtonDisabled ? .gray : Color("ButtonTextGreen"))
