@@ -12,8 +12,10 @@ struct NewSubscription: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
-    let service: Service
+    @State var service: Service
     let notificationHandler = NotificationHandler()
+    
+    @StateObject var selectedIcon = SelectedIcon()
     
     @State var name: String
     @State var color: Color
@@ -124,6 +126,21 @@ struct NewSubscription: View {
                 }
                 
                 Section {
+                    NavigationLink {
+                        CustomSubscriptionIcon()
+                            .environmentObject(selectedIcon)
+                    } label: {
+                        HStack {
+                            Text("Icon")
+                            Spacer()
+                            Image(service.icon)
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(color)
+                        }
+                    }.onChange(of: selectedIcon.selectedIcon) {
+                        service.icon = selectedIcon.selectedIcon
+                    }
                     HStack {
                         Text("Color")
                         Spacer()
