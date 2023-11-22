@@ -14,6 +14,8 @@ struct EditSubscription: View {
     let notificationHandler = NotificationHandler()
     let selectedSubscription: Subscription
     
+    @StateObject var selectedIcon = SelectedIcon()
+    
     @State var name: String
     @State var cost: String
     @State var description: String
@@ -126,6 +128,21 @@ struct EditSubscription: View {
                 }
                 
                 Section {
+                    NavigationLink {
+                        CustomSubscriptionIcon()
+                            .environmentObject(selectedIcon)
+                    } label: {
+                        HStack {
+                            Text("Icon")
+                            Spacer()
+                            Image(icon)
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(color)
+                        }
+                    }.onChange(of: selectedIcon.selectedIcon) {
+                        icon = selectedIcon.selectedIcon
+                    }
                     HStack {
                         Text("Color")
                         Spacer()
@@ -284,7 +301,7 @@ struct EditSubscription: View {
                         let subscription = Subscription(name: name,
                                                         cost: cost,
                                                         desc: description,
-                                                        icon: icon,
+                                                        icon: selectedIcon.selectedIcon,
                                                         color: color.toHexString(),
                                                         notes: notes,
                                                         firstBillDate: firstBillDate,
