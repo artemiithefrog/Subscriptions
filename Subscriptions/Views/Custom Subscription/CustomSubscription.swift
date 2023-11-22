@@ -15,7 +15,7 @@ struct CustomSubscription: View {
     @StateObject var selectedIcon = SelectedIcon()
     
     @State private var name: String = ""
-    @State private var color: Color = Color(.blue)
+    @State private var color: Color = Color(hex: "007AFF")
     @State private var cost: String = ""
     @State private var description: String = ""
     @State private var notes: String = ""
