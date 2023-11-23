@@ -24,6 +24,7 @@ struct EditSubscription: View {
     @State var icon: String
     
     @State var firstBillDate: Date
+    @State var daysToNotification: Int
     
     @State var selectedCycle: String
     @State var selectedCyclePeriod: Int
@@ -140,8 +141,12 @@ struct EditSubscription: View {
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(color)
                         }
-                    }.onChange(of: selectedIcon.selectedIcon) {
+                    }
+                    .onChange(of: selectedIcon.selectedIcon) {
                         icon = selectedIcon.selectedIcon
+                    }
+                    .onAppear {
+                        selectedIcon.selectedIcon = icon
                     }
                     HStack {
                         Text("Color")
@@ -290,21 +295,25 @@ struct EditSubscription: View {
                     } else {
                         notificationHandler.askPermission()
                         notificationHandler.deleteNotification(id: notificationId)
-                        notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
-                                                                                             date: selectedCycleDate,
-                                                                                             from: firstBillDate,
-                                                                                             nextNotificationDay: selectedDay,
-                                                                                             nextNotificationInterval: selectedDate,
-                                                                                             repeats: true,
-                                                                                             title: "\(name)'s bill",
-                                                                                             body: "This is notification from subscription manager, you'll pay \(cost)")
+                        let notification = notificationHandler.createNotification(every: selectedCyclePeriod,
+                                                                                 date: selectedCycleDate,
+                                                                                 from: firstBillDate,
+                                                                                 nextNotificationDay: selectedDay,
+                                                                                 nextNotificationInterval: selectedDate,
+                                                                                 repeats: true,
+                                                                                 title: "\(name)'s bill",
+                                                                                 body: "This is notification from subscription manager, you'll pay \(cost)")
+                        notificationId = notification.id
+                        daysToNotification = notification.days
+                        
                         let subscription = Subscription(name: name,
                                                         cost: cost,
                                                         desc: description,
                                                         icon: selectedIcon.selectedIcon,
                                                         color: color.toHexString(),
                                                         notes: notes,
-                                                        firstBillDate: firstBillDate,
+                                                        firstBillDate: firstBillDate, 
+                                                        daysToNotification: daysToNotification,
                                                         selectedCycle: selectedCycle,
                                                         selectedCyclePeriod: selectedCyclePeriod,
                                                         selectedCycleDate: selectedCycleDate,
