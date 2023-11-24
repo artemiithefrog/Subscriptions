@@ -13,9 +13,68 @@ struct Settings: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView  {
+            List {
+                Section {
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Subscription Premium")
+                    }
+                }
+                Section {
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("View Total As")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("App Theme")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Default Currency")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Sorting")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("App Icon")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Remove Subscriptions")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Font")
+                    }
+                }
+                Section {
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("iCloud Sync")
+                    }
+                }
+                Section {
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Privacy")
+                    }
+                }
                 
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -30,7 +89,7 @@ struct Settings: View {
                         .bold()
                 }
             }
-
+            
         }
     }
 }
