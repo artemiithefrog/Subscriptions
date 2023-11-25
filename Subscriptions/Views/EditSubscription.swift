@@ -24,7 +24,6 @@ struct EditSubscription: View {
     @State var icon: String
     
     @State var firstBillDate: Date
-    @State var daysToNotification: Int
     
     @State var selectedCycle: String
     @State var selectedCyclePeriod: Int
@@ -295,7 +294,7 @@ struct EditSubscription: View {
                     } else {
                         notificationHandler.askPermission()
                         notificationHandler.deleteNotification(id: notificationId)
-                        let notification = notificationHandler.createNotification(every: selectedCyclePeriod,
+                        notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
                                                                                  date: selectedCycleDate,
                                                                                  from: firstBillDate,
                                                                                  nextNotificationDay: selectedDay,
@@ -303,8 +302,6 @@ struct EditSubscription: View {
                                                                                  repeats: true,
                                                                                  title: "\(name)'s bill",
                                                                                  body: "This is notification from subscription manager, you'll pay \(cost)")
-                        notificationId = notification.id
-                        daysToNotification = notification.days
                         
                         let subscription = Subscription(name: name,
                                                         cost: cost,
@@ -313,7 +310,7 @@ struct EditSubscription: View {
                                                         color: color.toHexString(),
                                                         notes: notes,
                                                         firstBillDate: firstBillDate, 
-                                                        daysToNotification: daysToNotification,
+
                                                         selectedCycle: selectedCycle,
                                                         selectedCyclePeriod: selectedCyclePeriod,
                                                         selectedCycleDate: selectedCycleDate,
