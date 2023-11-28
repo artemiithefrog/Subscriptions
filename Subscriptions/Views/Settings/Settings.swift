@@ -67,7 +67,7 @@ struct Settings: View {
                 }
                 Section {
                     NavigationLink {
-                        
+                        Privacy()
                     } label: {
                         Text("Privacy")
                     }
