@@ -60,7 +60,7 @@ struct Settings: View {
                 }
                 Section {
                     NavigationLink {
-                        
+                        iCloudSync()
                     } label: {
                         Text("iCloud Sync")
                     }
