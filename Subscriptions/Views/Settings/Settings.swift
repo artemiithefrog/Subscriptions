@@ -87,6 +87,7 @@ struct Settings: View {
                 ToolbarItem(placement: .principal) {
                     Text("Settings")
                         .bold()
+                        .font(.system(size: 20))
                 }
             }
             
