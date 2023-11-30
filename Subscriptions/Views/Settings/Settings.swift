@@ -28,7 +28,7 @@ struct Settings: View {
                         Text("View Total As")
                     }
                     NavigationLink {
-                        
+                        AppTheme()
                     } label: {
                         Text("App Theme")
                     }
