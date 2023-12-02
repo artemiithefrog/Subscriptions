@@ -285,7 +285,7 @@ struct NewSubscription: View {
                                                                                              nextNotificationInterval: selectedDate,
                                                                                              repeats: true,
                                                                                              title: "\(name)'s bill",
-                                                                                             body: "This is notification from subscription manager, you'll pay \(cost)")
+                                                                                             body: "\(name) id due soon for $\(cost)")
                         let subscription = Subscription(name: name,
                                                         cost: cost,
                                                         desc: description,

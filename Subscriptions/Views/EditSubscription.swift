@@ -295,13 +295,13 @@ struct EditSubscription: View {
                         notificationHandler.askPermission()
                         notificationHandler.deleteNotification(id: notificationId)
                         notificationId = notificationHandler.createNotification(every: selectedCyclePeriod,
-                                                                                 date: selectedCycleDate,
-                                                                                 from: firstBillDate,
-                                                                                 nextNotificationDay: selectedDay,
-                                                                                 nextNotificationInterval: selectedDate,
-                                                                                 repeats: true,
-                                                                                 title: "\(name)'s bill",
-                                                                                 body: "This is notification from subscription manager, you'll pay \(cost)")
+                                                                                date: selectedCycleDate,
+                                                                                from: firstBillDate,
+                                                                                nextNotificationDay: selectedDay,
+                                                                                nextNotificationInterval: selectedDate,
+                                                                                repeats: true,
+                                                                                title: "\(name)'s bill",
+                                                                                body: "\(name) id due soon for $\(cost)")
                         
                         let subscription = Subscription(name: name,
                                                         cost: cost,
@@ -310,7 +310,7 @@ struct EditSubscription: View {
                                                         color: color.toHexString(),
                                                         notes: notes,
                                                         firstBillDate: firstBillDate, 
-
+                                                        
                                                         selectedCycle: selectedCycle,
                                                         selectedCyclePeriod: selectedCyclePeriod,
                                                         selectedCycleDate: selectedCycleDate,
