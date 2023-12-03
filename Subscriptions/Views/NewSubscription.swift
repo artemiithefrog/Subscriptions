@@ -73,7 +73,7 @@ struct NewSubscription: View {
                         TextField("Cost", text: $cost)
                             .multilineTextAlignment(.trailing)
                             .tint(Color("ButtonTextGreen"))
-                            .keyboardType(.numberPad)
+                            .keyboardType(.decimalPad)
                             .focused($costIsFocused)
                             .onChange(of: cost) {
                                 if cost.isEmpty {
