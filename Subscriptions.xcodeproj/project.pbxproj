@@ -10,6 +10,7 @@
 		161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F18512B07B4CA005B4140 /* NotificationHandler.swift */; };
 		162CC18E2B065FD000685121 /* EditSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CC18D2B065FD000685121 /* EditSubscription.swift */; };
 		163B2F542B28FF240039CEA1 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B2F532B28FF240039CEA1 /* SettingsViewModel.swift */; };
+		163B2F562B2902500039CEA1 /* Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B2F552B2902500039CEA1 /* Subscriptions.swift */; };
 		16A23FCB2B1356C200EE7F78 /* SubscriptionPremium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FCA2B1356C200EE7F78 /* SubscriptionPremium.swift */; };
 		16A23FCD2B1356D700EE7F78 /* ViewTotalAs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FCC2B1356D700EE7F78 /* ViewTotalAs.swift */; };
 		16A23FCF2B1356E600EE7F78 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FCE2B1356E600EE7F78 /* AppTheme.swift */; };
@@ -45,6 +46,7 @@
 		161F18512B07B4CA005B4140 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		162CC18D2B065FD000685121 /* EditSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscription.swift; sourceTree = "<group>"; };
 		163B2F532B28FF240039CEA1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		163B2F552B2902500039CEA1 /* Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriptions.swift; sourceTree = "<group>"; };
 		16A23FCA2B1356C200EE7F78 /* SubscriptionPremium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPremium.swift; sourceTree = "<group>"; };
 		16A23FCC2B1356D700EE7F78 /* ViewTotalAs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTotalAs.swift; sourceTree = "<group>"; };
 		16A23FCE2B1356E600EE7F78 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -94,6 +96,15 @@
 				161F18512B07B4CA005B4140 /* NotificationHandler.swift */,
 			);
 			path = Handlers;
+			sourceTree = "<group>";
+		};
+		163B2F572B29025B0039CEA1 /* AllSubscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
+				163B2F552B2902500039CEA1 /* Subscriptions.swift */,
+			);
+			path = AllSubscriptions;
 			sourceTree = "<group>";
 		};
 		16A23FC92B13567100EE7F78 /* Settings */ = {
@@ -193,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				16C35CD92AFEC48600295D09 /* ContentView.swift */,
-				16C35CE62AFEC5BE00295D09 /* AllSubscriptions.swift */,
+				163B2F572B29025B0039CEA1 /* AllSubscriptions */,
 				16C35CEC2AFECCBA00295D09 /* AddSubscription.swift */,
 				16C35A192B02C8000024A9B5 /* NewSubscription.swift */,
 				16FDA5432B0B88B9005B092E /* Custom Subscription */,
@@ -332,6 +343,7 @@
 				16A23FDF2B13578200EE7F78 /* Privacy.swift in Sources */,
 				16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */,
 				16C35CEB2AFEC6E300295D09 /* Subscription.swift in Sources */,
+				163B2F562B2902500039CEA1 /* Subscriptions.swift in Sources */,
 				16C35CD82AFEC48600295D09 /* SubscriptionsApp.swift in Sources */,
 				16AF7AC72B192FCB00700A08 /* Themes.swift in Sources */,
 				16A23FDB2B13575E00EE7F78 /* Font.swift in Sources */,
