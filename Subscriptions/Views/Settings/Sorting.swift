@@ -32,27 +32,30 @@ struct Sorting: View {
                     }
                     .onTapGesture {
                         selectedItem = item
-                    }
-                }
-                Text("")
-                Text("selected item: \(selectedItem)")
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
                         UserDefaults.standard.setValue(selectedItem, forKey: "APP_SORTING")
                         settingsVM.selectedSorting = selectedItem
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
                         dismiss()
                     } label: {
-                        Text("Save")
+                        Image(systemName: "chevron.left")
                     }
+                    .tint(Color("ButtonTextGreen"))
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Sorting")
+                        .bold()
+                        .font(.system(size: 20))
                 }
             }
             .onAppear {
                 selectedItem = settingsVM.selectedSorting
-            }
-            .onChange(of: settingsVM.selectedSorting) {
-                print("view model changed  \(settingsVM.selectedSorting)")
             }
         }
     }
