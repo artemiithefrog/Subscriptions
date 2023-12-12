@@ -14,6 +14,8 @@ struct AllSubscriptions: View {
     @State private var showAddSubscriptionView = false
     @State private var showSettingsView = false
     
+    @ObservedObject private var settingsVM = SettingsViewModel()
+    
     var body: some View {
         NavigationStack {
             HStack {
@@ -123,6 +125,7 @@ struct AllSubscriptions: View {
         }
         .sheet(isPresented: $showSettingsView) {
             Settings()
+                .environmentObject(settingsVM)
         }
     }
 }
