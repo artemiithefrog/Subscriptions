@@ -69,9 +69,9 @@ struct Subscriptions: View {
         case "Alphabetical (Z - A)":
             _subscriptions = Query(sort: [SortDescriptor(\Subscription.name, order: .reverse)])
         case "Price (High - Low)":
-            _subscriptions = Query(sort: [SortDescriptor(\Subscription.cost)])
-        case "Price (Low - High)":
             _subscriptions = Query(sort: [SortDescriptor(\Subscription.cost, order: .reverse)])
+        case "Price (Low - High)":
+            _subscriptions = Query(sort: [SortDescriptor(\Subscription.cost)])
         default:
             _subscriptions = Query(sort: [SortDescriptor(\Subscription.name)])
         }
