@@ -10,6 +10,7 @@ import SwiftUI
 struct Settings: View {
     
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var settingsVM: SettingsViewModel
     
     var body: some View {
         NavigationStack {
@@ -38,7 +39,8 @@ struct Settings: View {
                         Text("Default Currency")
                     }
                     NavigationLink {
-                        
+                       Sorting()
+                            .environmentObject(settingsVM)
                     } label: {
                         Text("Sorting")
                     }
