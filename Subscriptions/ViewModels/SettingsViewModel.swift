@@ -10,5 +10,6 @@ import Foundation
 class SettingsViewModel: ObservableObject {
     
     @Published var selectedSorting = UserDefaults.standard.string(forKey: "APP_SORTING") ?? "Latest"
+    @Published var selectedTheme = UserDefaults.standard.string(forKey: "APP_THEME") ?? "System"
     
 }
