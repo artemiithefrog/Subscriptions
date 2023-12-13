@@ -22,8 +22,6 @@
 		16A23FDD2B13577900EE7F78 /* iCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDC2B13577900EE7F78 /* iCloudSync.swift */; };
 		16A23FDF2B13578200EE7F78 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDE2B13578200EE7F78 /* Privacy.swift */; };
 		16AF7AC72B192FCB00700A08 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF7AC62B192FCB00700A08 /* Themes.swift */; };
-		16AF7ACA2B192FF900700A08 /* SelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF7AC92B192FF900700A08 /* SelectionManager.swift */; };
-		16AF7ACD2B19302A00700A08 /* SelectedTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF7ACC2B19302A00700A08 /* SelectedTheme.swift */; };
 		16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */; };
 		16C35A152B02C0C90024A9B5 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A142B02C0C90024A9B5 /* Service.swift */; };
 		16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C35A172B02C26F0024A9B5 /* Color+Ext.swift */; };
@@ -58,8 +56,6 @@
 		16A23FDC2B13577900EE7F78 /* iCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSync.swift; sourceTree = "<group>"; };
 		16A23FDE2B13578200EE7F78 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		16AF7AC62B192FCB00700A08 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
-		16AF7AC92B192FF900700A08 /* SelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionManager.swift; sourceTree = "<group>"; };
-		16AF7ACC2B19302A00700A08 /* SelectedTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTheme.swift; sourceTree = "<group>"; };
 		16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewModel.swift; sourceTree = "<group>"; };
 		16C35A142B02C0C90024A9B5 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		16C35A172B02C26F0024A9B5 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -113,7 +109,7 @@
 				16F1AD1A2B01811B007F2915 /* Settings.swift */,
 				16A23FCA2B1356C200EE7F78 /* SubscriptionPremium.swift */,
 				16A23FCC2B1356D700EE7F78 /* ViewTotalAs.swift */,
-				16AF7ACB2B19300E00700A08 /* AppTheme */,
+				16A23FCE2B1356E600EE7F78 /* AppTheme.swift */,
 				16A23FD02B1356F900EE7F78 /* DefaultCurrency.swift */,
 				16A23FD22B13570100EE7F78 /* Sorting.swift */,
 				16A23FD62B13571E00EE7F78 /* AppIcon.swift */,
@@ -123,23 +119,6 @@
 				16A23FDE2B13578200EE7F78 /* Privacy.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		16AF7AC82B192FE500700A08 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				16AF7AC92B192FF900700A08 /* SelectionManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		16AF7ACB2B19300E00700A08 /* AppTheme */ = {
-			isa = PBXGroup;
-			children = (
-				16A23FCE2B1356E600EE7F78 /* AppTheme.swift */,
-				16AF7ACC2B19302A00700A08 /* SelectedTheme.swift */,
-			);
-			path = AppTheme;
 			sourceTree = "<group>";
 		};
 		16C35A112B02C0810024A9B5 /* ViewModels */ = {
@@ -185,7 +164,6 @@
 				16C35CE52AFEC5AF00295D09 /* Views */,
 				16CEFB372B0808510074F020 /* Components */,
 				16C35A162B02C25C0024A9B5 /* Extentions */,
-				16AF7AC82B192FE500700A08 /* Managers */,
 				16C35CDB2AFEC48800295D09 /* Assets.xcassets */,
 				16C35CDD2AFEC48800295D09 /* Preview Content */,
 			);
@@ -322,7 +300,6 @@
 			files = (
 				16FDA5452B0B8BBB005B092E /* CustomSubscriptionIcon.swift in Sources */,
 				16C35A132B02C0A00024A9B5 /* ServicesViewModel.swift in Sources */,
-				16AF7ACA2B192FF900700A08 /* SelectionManager.swift in Sources */,
 				16A23FCF2B1356E600EE7F78 /* AppTheme.swift in Sources */,
 				16CEFB3A2B0808710074F020 /* CyclePicker.swift in Sources */,
 				163B2F542B28FF240039CEA1 /* SettingsViewModel.swift in Sources */,
@@ -349,7 +326,6 @@
 				16A23FDB2B13575E00EE7F78 /* Font.swift in Sources */,
 				16A23FD32B13570100EE7F78 /* Sorting.swift in Sources */,
 				16C35A1A2B02C8000024A9B5 /* NewSubscription.swift in Sources */,
-				16AF7ACD2B19302A00700A08 /* SelectedTheme.swift in Sources */,
 				16A23FCD2B1356D700EE7F78 /* ViewTotalAs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
