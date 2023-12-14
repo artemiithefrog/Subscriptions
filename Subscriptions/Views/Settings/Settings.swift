@@ -30,6 +30,7 @@ struct Settings: View {
                     }
                     NavigationLink {
                         AppTheme()
+                            .environmentObject(settingsVM)
                     } label: {
                         Text("App Theme")
                     }
