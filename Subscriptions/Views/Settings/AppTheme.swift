@@ -34,6 +34,16 @@ struct AppTheme: View {
                         selectedItem = item
                         UserDefaults.standard.setValue(selectedItem, forKey: "APP_THEME")
                         settingsVM.selectedTheme = selectedItem
+                        if selectedItem == "System" {
+                            settingsVM.appTheme = false
+                            UserDefaults.standard.setValue(false, forKey: "SELECTED_THEME")
+                        } else if selectedItem == "Light" {
+                            settingsVM.appTheme = false
+                            UserDefaults.standard.setValue(false, forKey: "SELECTED_THEME")
+                        } else {
+                            settingsVM.appTheme = true
+                            UserDefaults.standard.setValue(true, forKey: "SELECTED_THEME")
+                        }
                     }
                 }
             }
