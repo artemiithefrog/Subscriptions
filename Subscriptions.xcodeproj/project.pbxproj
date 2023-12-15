@@ -18,7 +18,6 @@
 		16A23FD32B13570100EE7F78 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD22B13570100EE7F78 /* Sorting.swift */; };
 		16A23FD72B13571E00EE7F78 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD62B13571E00EE7F78 /* AppIcon.swift */; };
 		16A23FD92B13575500EE7F78 /* RemoveSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */; };
-		16A23FDB2B13575E00EE7F78 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDA2B13575E00EE7F78 /* Font.swift */; };
 		16A23FDD2B13577900EE7F78 /* iCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDC2B13577900EE7F78 /* iCloudSync.swift */; };
 		16A23FDF2B13578200EE7F78 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDE2B13578200EE7F78 /* Privacy.swift */; };
 		16AF7AC72B192FCB00700A08 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF7AC62B192FCB00700A08 /* Themes.swift */; };
@@ -52,7 +51,6 @@
 		16A23FD22B13570100EE7F78 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		16A23FD62B13571E00EE7F78 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSubscriptions.swift; sourceTree = "<group>"; };
-		16A23FDA2B13575E00EE7F78 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		16A23FDC2B13577900EE7F78 /* iCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSync.swift; sourceTree = "<group>"; };
 		16A23FDE2B13578200EE7F78 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		16AF7AC62B192FCB00700A08 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				16A23FD22B13570100EE7F78 /* Sorting.swift */,
 				16A23FD62B13571E00EE7F78 /* AppIcon.swift */,
 				16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */,
-				16A23FDA2B13575E00EE7F78 /* Font.swift */,
 				16A23FDC2B13577900EE7F78 /* iCloudSync.swift */,
 				16A23FDE2B13578200EE7F78 /* Privacy.swift */,
 			);
@@ -323,7 +320,6 @@
 				163B2F562B2902500039CEA1 /* Subscriptions.swift in Sources */,
 				16C35CD82AFEC48600295D09 /* SubscriptionsApp.swift in Sources */,
 				16AF7AC72B192FCB00700A08 /* Themes.swift in Sources */,
-				16A23FDB2B13575E00EE7F78 /* Font.swift in Sources */,
 				16A23FD32B13570100EE7F78 /* Sorting.swift in Sources */,
 				16C35A1A2B02C8000024A9B5 /* NewSubscription.swift in Sources */,
 				16A23FCD2B1356D700EE7F78 /* ViewTotalAs.swift in Sources */,
