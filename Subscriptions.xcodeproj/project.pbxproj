@@ -17,7 +17,6 @@
 		16A23FD12B1356F900EE7F78 /* DefaultCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD02B1356F900EE7F78 /* DefaultCurrency.swift */; };
 		16A23FD32B13570100EE7F78 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD22B13570100EE7F78 /* Sorting.swift */; };
 		16A23FD72B13571E00EE7F78 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD62B13571E00EE7F78 /* AppIcon.swift */; };
-		16A23FD92B13575500EE7F78 /* RemoveSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */; };
 		16A23FDD2B13577900EE7F78 /* iCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDC2B13577900EE7F78 /* iCloudSync.swift */; };
 		16A23FDF2B13578200EE7F78 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A23FDE2B13578200EE7F78 /* Privacy.swift */; };
 		16AF7AC72B192FCB00700A08 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AF7AC62B192FCB00700A08 /* Themes.swift */; };
@@ -50,7 +49,6 @@
 		16A23FD02B1356F900EE7F78 /* DefaultCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCurrency.swift; sourceTree = "<group>"; };
 		16A23FD22B13570100EE7F78 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		16A23FD62B13571E00EE7F78 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
-		16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSubscriptions.swift; sourceTree = "<group>"; };
 		16A23FDC2B13577900EE7F78 /* iCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSync.swift; sourceTree = "<group>"; };
 		16A23FDE2B13578200EE7F78 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		16AF7AC62B192FCB00700A08 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				16A23FD02B1356F900EE7F78 /* DefaultCurrency.swift */,
 				16A23FD22B13570100EE7F78 /* Sorting.swift */,
 				16A23FD62B13571E00EE7F78 /* AppIcon.swift */,
-				16A23FD82B13575500EE7F78 /* RemoveSubscriptions.swift */,
 				16A23FDC2B13577900EE7F78 /* iCloudSync.swift */,
 				16A23FDE2B13578200EE7F78 /* Privacy.swift */,
 			);
@@ -301,7 +298,6 @@
 				16CEFB3A2B0808710074F020 /* CyclePicker.swift in Sources */,
 				163B2F542B28FF240039CEA1 /* SettingsViewModel.swift in Sources */,
 				16A23FCB2B1356C200EE7F78 /* SubscriptionPremium.swift in Sources */,
-				16A23FD92B13575500EE7F78 /* RemoveSubscriptions.swift in Sources */,
 				161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */,
 				16C35A152B02C0C90024A9B5 /* Service.swift in Sources */,
 				16C35A182B02C26F0024A9B5 /* Color+Ext.swift in Sources */,
