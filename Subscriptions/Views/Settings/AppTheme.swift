@@ -33,7 +33,6 @@ struct AppTheme: View {
                     .onTapGesture {
                         selectedItem = item
                         UserDefaults.standard.setValue(selectedItem, forKey: "APP_THEME")
-                        settingsVM.selectedTheme = selectedItem
                         if selectedItem == "System" {
                             settingsVM.appTheme = false
                             UserDefaults.standard.setValue(false, forKey: "SELECTED_THEME")
@@ -63,9 +62,6 @@ struct AppTheme: View {
                         .bold()
                         .font(.system(size: 20))
                 }
-            }
-            .onAppear {
-                selectedItem = settingsVM.selectedTheme
             }
         }
     }
