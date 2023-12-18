@@ -24,7 +24,7 @@ struct Settings: View {
                 }
                 Section {
                     NavigationLink {
-                        
+                        ViewTotalAs()
                     } label: {
                         Text("View Total As")
                     }
@@ -49,11 +49,6 @@ struct Settings: View {
                         
                     } label: {
                         Text("App Icon")
-                    }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Remove Subscriptions")
                     }
                     NavigationLink {
                         
