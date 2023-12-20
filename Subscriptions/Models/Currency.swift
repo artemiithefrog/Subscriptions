@@ -12,5 +12,6 @@ struct Currency: Codable, Hashable {
     var name: String
     var description: String
     var currencyCode: String
+    var currencySymbol: String
     
 }
