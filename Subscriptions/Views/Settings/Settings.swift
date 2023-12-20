@@ -35,7 +35,7 @@ struct Settings: View {
                         Text("App Theme")
                     }
                     NavigationLink {
-                        
+                        DefaultCurrency()
                     } label: {
                         Text("Default Currency")
                     }
