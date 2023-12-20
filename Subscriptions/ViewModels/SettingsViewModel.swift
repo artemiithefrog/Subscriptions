@@ -11,6 +11,6 @@ import SwiftUI
 class SettingsViewModel: ObservableObject {
     
     @Published var selectedSorting = UserDefaults.standard.string(forKey: "APP_SORTING") ?? "Latest"
-    @AppStorage("isDarkMode") var appTheme = UserDefaults.standard.bool(forKey: "SELECTED_THEME")
+    @AppStorage("APP_THEME") var appTheme = "System"
     
 }

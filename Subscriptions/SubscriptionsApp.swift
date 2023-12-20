@@ -10,13 +10,26 @@ import SwiftUI
 @main
 struct SubscriptionsApp: App {
     
-    @ObservedObject var settingsVM = SettingsViewModel()
-    @AppStorage("isDarkMode") var isDarkMode = UserDefaults.standard.bool(forKey: "SELECTED_THEME") 
+    @StateObject var settingsVM = SettingsViewModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(settingsVM.appTheme ? .dark : .light)
+            switch settingsVM.appTheme {
+            case "System":
+                ContentView()
+                    .environmentObject(settingsVM)
+            case "Light":
+                ContentView()
+                    .preferredColorScheme(.light)
+                    .environmentObject(settingsVM)
+            case "Dark":
+                ContentView()
+                    .preferredColorScheme(.dark)
+                    .environmentObject(settingsVM)
+            default:
+                ContentView()
+                    .environmentObject(settingsVM)
+            }
         }
         .modelContainer(for: [Subscription.self])
     }
