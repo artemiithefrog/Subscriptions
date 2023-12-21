@@ -13,6 +13,7 @@ struct CustomSubscription: View {
     @Environment(\.modelContext) private var context
     let notificationHandler = NotificationHandler()
     @StateObject var selectedIcon = SelectedIcon()
+    @ObservedObject var settingsVM = SettingsViewModel()
     
     @State private var name: String = ""
     @State private var color: Color = Color(hex: "007AFF")
@@ -288,7 +289,8 @@ struct CustomSubscription: View {
                                                                                 title: "\(name)'s bill",
                                                                                 body: "\(name) id due soon for $\(cost)")
                         let subscription = Subscription(name: name,
-                                                        cost: cost,
+                                                        cost: cost, 
+                                                        currencySymbol: settingsVM.selectedCurrencySymbol,
                                                         desc: description,
                                                         icon: selectedIcon.selectedIcon,
                                                         color: color.toHexString(),

@@ -48,7 +48,7 @@ struct Subscriptions: View {
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("$\(subscription.cost)")
+                        Text("\(subscription.currencySymbol)\(subscription.cost)")
                             .font(.callout)
                     }
                 }

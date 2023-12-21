@@ -15,6 +15,7 @@ struct NewSubscription: View {
     @State var service: Service
     let notificationHandler = NotificationHandler()
     
+    @ObservedObject var settingsVM = SettingsViewModel()
     @StateObject var selectedIcon = SelectedIcon()
     
     @State var name: String
@@ -288,6 +289,7 @@ struct NewSubscription: View {
                                                                                              body: "\(name) id due soon for $\(cost)")
                         let subscription = Subscription(name: name,
                                                         cost: cost,
+                                                        currencySymbol: settingsVM.selectedCurrencySymbol,
                                                         desc: description,
                                                         icon: service.icon,
                                                         color: color.toHexString(),

@@ -15,6 +15,7 @@ struct EditSubscription: View {
     let selectedSubscription: Subscription
     
     @StateObject var selectedIcon = SelectedIcon()
+    @ObservedObject var settingsVM = SettingsViewModel()
     
     @State var name: String
     @State var cost: String
@@ -305,6 +306,7 @@ struct EditSubscription: View {
                         
                         let subscription = Subscription(name: name,
                                                         cost: cost,
+                                                        currencySymbol: settingsVM.selectedCurrencySymbol,
                                                         desc: description,
                                                         icon: selectedIcon.selectedIcon,
                                                         color: color.toHexString(),
