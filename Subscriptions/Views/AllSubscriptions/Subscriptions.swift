@@ -50,9 +50,6 @@ struct Subscriptions: View {
                     VStack(alignment: .trailing) {
                         Text("$\(subscription.cost)")
                             .font(.callout)
-                        Text("28 Days")
-                            .font(.subheadline)
-                            .foregroundColor(Color.gray)
                     }
                 }
             }
