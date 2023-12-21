@@ -13,6 +13,7 @@ class Subscription {
     
     var name: String
     var cost: String
+    var currencySymbol: String
     var desc: String
     var icon: String
     var color: String
@@ -30,9 +31,10 @@ class Subscription {
     
     var notificationId: String
     
-    init(name: String, cost: String, desc: String, icon: String, color: String, notes: String, firstBillDate: Date, selectedCycle: String, selectedCyclePeriod: Int, selectedCycleDate: String, selectedDay: String, selectedDate: Int, selectedTime: String, notificationId: String) {
+    init(name: String, cost: String, currencySymbol: String, desc: String, icon: String, color: String, notes: String, firstBillDate: Date, selectedCycle: String, selectedCyclePeriod: Int, selectedCycleDate: String, selectedDay: String, selectedDate: Int, selectedTime: String, notificationId: String) {
         self.name = name
         self.cost = cost
+        self.currencySymbol = currencySymbol
         self.desc = desc
         self.icon = icon
         self.color = color
@@ -46,5 +48,4 @@ class Subscription {
         self.selectedTime = selectedTime
         self.notificationId = notificationId
     }
-    
 }
