@@ -15,6 +15,7 @@ struct EditSubscription: View {
     let selectedSubscription: Subscription
     
     @StateObject var selectedIcon = SelectedIcon()
+    @StateObject var subscriptionVM = SubscriptionViewModel()
     @ObservedObject var settingsVM = SettingsViewModel()
     
     @State var name: String
@@ -62,10 +63,7 @@ struct EditSubscription: View {
                             .tint(Color("ButtonTextGreen"))
                             .focused($nameIsFocused)
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionVM.hideAllPickers()
                             }
                             .opacity(nameIsFocused ? 1 : 0.4)
                     }
@@ -86,10 +84,7 @@ struct EditSubscription: View {
                                 }
                             }
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionVM.hideAllPickers()
                             }
                             .opacity(costIsFocused ? 1 : 0.4)
                     }
@@ -102,10 +97,7 @@ struct EditSubscription: View {
                             .tint(Color("ButtonTextGreen"))
                             .focused($descriptionIsFocused)
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionVM.hideAllPickers()
                             }
                             .opacity(descriptionIsFocused ? 1 : 0.4)
                     }
@@ -254,10 +246,7 @@ struct EditSubscription: View {
                     Spacer()
                     Button {
                         withAnimation {
-                            showSheet = false
-                            showCycle = false
-                            showAlert = false
-                            showFirstBillDate = false
+                            subscriptionVM.hideAllPickers()
                         }
                     } label: {
                         Text("Done")

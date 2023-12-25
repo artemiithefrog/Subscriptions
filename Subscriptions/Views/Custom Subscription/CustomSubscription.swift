@@ -13,6 +13,7 @@ struct CustomSubscription: View {
     @Environment(\.modelContext) private var context
     let notificationHandler = NotificationHandler()
     @StateObject var selectedIcon = SelectedIcon()
+    @StateObject var subscriptionsVM = SubscriptionViewModel()
     @ObservedObject var settingsVM = SettingsViewModel()
     
     @State private var name: String = ""
@@ -64,10 +65,7 @@ struct CustomSubscription: View {
                                 }
                             }
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionsVM.hideAllPickers()
                             }
                             .opacity(nameIsFocused ? 1 : 0.4)
                     }
@@ -88,10 +86,7 @@ struct CustomSubscription: View {
                                 }
                             }
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionsVM.hideAllPickers()
                             }
                             .opacity(costIsFocused ? 1 : 0.4)
                     }
@@ -104,10 +99,7 @@ struct CustomSubscription: View {
                             .tint(Color("ButtonTextGreen"))
                             .focused($descriptionIsFocused)
                             .onTapGesture {
-                                showSheet = false
-                                showAlert = false
-                                showCycle = false
-                                showFirstBillDate = false
+                                subscriptionsVM.hideAllPickers()
                             }
                             .opacity(descriptionIsFocused ? 1 : 0.4)
                     }
@@ -239,10 +231,7 @@ struct CustomSubscription: View {
                     Spacer()
                     Button {
                         withAnimation {
-                            showSheet = false
-                            showCycle = false
-                            showAlert = false
-                            showFirstBillDate = false
+                            subscriptionsVM.hideAllPickers()
                         }
                     } label: {
                         Text("Done")
