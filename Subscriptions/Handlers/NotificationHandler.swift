@@ -10,7 +10,7 @@ import UserNotifications
 
 class NotificationHandler: ObservableObject {
     
-//    разрешение на отправку уведомлений
+//    permission to send notifications
     func askPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {success, error in
             if success {
@@ -21,7 +21,7 @@ class NotificationHandler: ObservableObject {
         }
     }
     
-//    функция создания уведомлений
+//    notification function
     func createNotification(every interval: Int,
                             date: String,
                             from: Date,
