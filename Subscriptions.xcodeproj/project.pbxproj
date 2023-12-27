@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16005D992B362F1300764AE1 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16005D982B362F1300764AE1 /* SubscriptionViewModel.swift */; };
 		161F18522B07B4CA005B4140 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161F18512B07B4CA005B4140 /* NotificationHandler.swift */; };
 		162CC18E2B065FD000685121 /* EditSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162CC18D2B065FD000685121 /* EditSubscription.swift */; };
 		163B2F542B28FF240039CEA1 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B2F532B28FF240039CEA1 /* SettingsViewModel.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16005D982B362F1300764AE1 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
 		161F18512B07B4CA005B4140 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		162CC18D2B065FD000685121 /* EditSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscription.swift; sourceTree = "<group>"; };
 		163B2F532B28FF240039CEA1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		16C35A112B02C0810024A9B5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				16005D982B362F1300764AE1 /* SubscriptionViewModel.swift */,
 				16C35A122B02C0A00024A9B5 /* ServicesViewModel.swift */,
 				163B2F532B28FF240039CEA1 /* SettingsViewModel.swift */,
 			);
@@ -314,6 +317,7 @@
 				16C35CED2AFECCBA00295D09 /* AddSubscription.swift in Sources */,
 				16C35CDA2AFEC48600295D09 /* ContentView.swift in Sources */,
 				16A23FDF2B13578200EE7F78 /* Privacy.swift in Sources */,
+				16005D992B362F1300764AE1 /* SubscriptionViewModel.swift in Sources */,
 				16C35CE72AFEC5BE00295D09 /* AllSubscriptions.swift in Sources */,
 				16C35CEB2AFEC6E300295D09 /* Subscription.swift in Sources */,
 				16610CC22B330E2400FAF80D /* AppTheme.swift in Sources */,
